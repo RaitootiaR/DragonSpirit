@@ -21,7 +21,7 @@ public class Draggrowitem : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.transform.parent.gameObject.GetComponent<Player>().Draggrow();
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 }
