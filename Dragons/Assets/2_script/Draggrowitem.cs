@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Draggrowitem : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject player;
+
+    [SerializeField]
+    private float distance;
+
+    private Vector3 playerpoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +21,11 @@ public class Draggrowitem : MonoBehaviour
     void Update()
     {
         
+    }
+    private void FixedUpdate()
+    {
+        playerpoint = new Vector3(player.transform.position.x, gameObject.transform.position.y, player.transform.position.z);
+        gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, playerpoint, Time.deltaTime*5);
     }
     private void OnTriggerEnter(Collider other)
     {
