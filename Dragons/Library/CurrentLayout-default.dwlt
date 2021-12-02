@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1902
     height: 981
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_MinSize: {x: 910, y: 442}
   m_MaxSize: {x: 22005, y: 10021}
   vertical: 0
-  controlID: 15
+  controlID: 35
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -149,7 +149,11 @@ MonoBehaviour:
   m_MinSize: {x: 201, y: 442}
   m_MaxSize: {x: 4001, y: 8042}
   vertical: 1
+<<<<<<< HEAD
   controlID: 120
+=======
+  controlID: 101
+>>>>>>> b5d3699bee9233848c523a27e05d3294e2cdbcbd
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -308,23 +312,27 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 04320000
       m_LastClickedID: 0
+<<<<<<< HEAD
       m_ExpandedIDs: 7ebfffff
+=======
+      m_ExpandedIDs: 62fbffff00370000
+>>>>>>> b5d3699bee9233848c523a27e05d3294e2cdbcbd
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Elemental Dragon Toon
+        m_OriginalName: Elemental Dragon Toon
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 14010
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 7}
       m_SearchString: 
@@ -410,21 +418,27 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Malbers Animations/Dragons/6 - Elemental Dragon/Materials/Toon
+    - Assets/Malbers Animations/Dragons/6 - Elemental Dragon/Materials
     m_Globs: []
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Malbers Animations/Dragons/6 - Elemental Dragon/Materials/Toon
+  - Assets/Malbers Animations/Dragons/6 - Elemental Dragon/Materials
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\s20197026\Documents\DragonSpirit\Dragons
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
     m_SelectedIDs: 8e680000
     m_LastClickedID: 26766
     m_ExpandedIDs: 00000000586800005a6800005c6800005e68000060680000626800006468000066680000686800008268000000ca9a3b
+=======
+    m_SelectedIDs: ea3c0000
+    m_LastClickedID: 15594
+    m_ExpandedIDs: 00000000b83c0000ba3c0000bc3c0000be3c0000c03c0000c23c0000c43c0000c63c0000c83c0000ea3c000000ca9a3b
+>>>>>>> b5d3699bee9233848c523a27e05d3294e2cdbcbd
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
