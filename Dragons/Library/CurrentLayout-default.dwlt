@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1904
     height: 981
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_MinSize: {x: 911, y: 442}
   m_MaxSize: {x: 22006, y: 10021}
   vertical: 0
-  controlID: 128
+  controlID: 129
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_MinSize: {x: 201, y: 442}
   m_MaxSize: {x: 4001, y: 8042}
   vertical: 1
-  controlID: 55
+  controlID: 19
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -221,8 +221,8 @@ MonoBehaviour:
     y: 0
     width: 372
     height: 931
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -247,8 +247,8 @@ MonoBehaviour:
     y: 0
     width: 817
     height: 460
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -310,7 +310,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: aebfffff
+      m_ExpandedIDs: 62fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -410,21 +410,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/1_Stage
     m_Globs: []
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/1_Stage
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\s20197005\Documents\DragonSpirit\Dragons
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 20680000
-    m_LastClickedID: 26656
-    m_ExpandedIDs: 00000000206800002268000000ca9a3b
+    m_SelectedIDs: a03c0000
+    m_LastClickedID: 15520
+    m_ExpandedIDs: 00000000903c0000923c000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -452,7 +452,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000002068000022680000
+    m_ExpandedIDs: 00000000903c0000923c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -684,7 +684,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.031803563, y: -0.7241395, z: -0.033475455, w: -0.6881129}
     speed: 2
-    m_Value: {x: 0.03180341, y: -0.72413605, z: -0.033475295, w: -0.68810964}
+    m_Value: {x: -0.031803563, y: 0.7241395, z: 0.033475455, w: 0.6881129}
   m_Size:
     m_Target: 3.9073946
     speed: 2
