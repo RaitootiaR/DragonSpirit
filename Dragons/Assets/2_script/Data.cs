@@ -9,7 +9,8 @@ public class Data : MonoSingleton<Data>
     public const KeyCode DownKey = KeyCode.DownArrow;//下移動キー
     public const KeyCode RightKey = KeyCode.RightArrow;//右移動キー
     public const KeyCode LeftKey = KeyCode.LeftArrow;//左移動キー
-    public const KeyCode ShotKey = KeyCode.Z;//ショットキー
+    public const KeyCode ShotKey = KeyCode.Z;//空中ショットキー
+    public const KeyCode GShotKey = KeyCode.X;//地上ショットキー
     public const KeyCode GroundKey = KeyCode.LeftShift;//地面攻撃切り替えキー
     public const string Horizontal = "Horizontal";
     public const string Vertical = "Vertical";

@@ -20,6 +20,14 @@ public class Player : Character
     private GameObject bigDrag;
 
 
+
+
+    ///<summary>
+    ///オブジェクトの生成
+    ///</summary>
+    [SerializeField, Tooltip("ドラゴンの口をここに割り当てる")]
+    private GameObject DragonMouse;
+
     /// <summary>
     /// 射出するオブジェクト
     /// </summary>
@@ -71,17 +79,9 @@ public class Player : Character
     {
         //基盤のUpdateの処理だから消さない
         base.OnUpdate();
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            Draggrow();
-        }
+        
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            // マウス左クリックでボールを射出する
-            ThrowingBall();
-        }
-
+      
     }
 
     protected override void Move()
@@ -116,12 +116,24 @@ public class Player : Character
             pool.Pop(Trs.position, rot);
             time = 0;
         }
+        else if (Input.GetKey(Data.GShotKey) && BulletCorrectlyIntervalGround() < time)
+        {
+            ThrowingBall();
+            time = 0;
+        }
         else
         {
             time += Time.deltaTime;
         }
 
+        
         float BulletCorrectlyInterval()
+        {
+            float correctly = Input.GetAxis(Data.Vertical) * Data.Data.PlayerBulletCorrectly;//スティックの状態から補正値を求める。
+            return Data.Data.PlayerBulletInterval + correctly;//補正値を加えた間隔値を返す
+        }
+
+        float BulletCorrectlyIntervalGround()
         {
             float correctly = Input.GetAxis(Data.Vertical) * Data.Data.PlayerBulletCorrectly;//スティックの状態から補正値を求める。
             return Data.Data.PlayerBulletInterval + correctly;//補正値を加えた間隔値を返す
@@ -131,7 +143,7 @@ public class Player : Character
 
    
     //ドラゴンを成長させるメソッド
-    private void Draggrow()
+    public void Draggrow()
     {
         
         switch (nowstate)
@@ -168,7 +180,7 @@ public class Player : Character
         if (ThrowingObject != null && TargetObject != null)
         {
             // Ballオブジェクトの生成
-            GameObject ball = Instantiate(ThrowingObject, this.transform.position, Quaternion.identity);
+            GameObject ball = Instantiate(ThrowingObject, DragonMouse.transform.position, Quaternion.identity);
 
             // 標的の座標
             Vector3 targetPosition = TargetObject.transform.position;
@@ -177,11 +189,11 @@ public class Player : Character
             float angle = ThrowingAngle;
 
             // 射出速度を算出
-            Vector3 velocity = CalculateVelocity(this.transform.position, targetPosition, angle);
+            Vector3 velocity = CalculateVelocity(DragonMouse.transform.position, targetPosition, angle);
 
             // 射出
             Rigidbody rid = ball.GetComponent<Rigidbody>();
-            rid.AddForce(velocity * rid.mass, ForceMode.Impulse);
+            rid.AddForce(velocity * rid.mass, ForceMode.VelocityChange);
         }
         else
         {
