@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:af2dced046cec4146a376cc6753e99bf446d7f92e19cbf11dcfd99157e6c4f13
-size 96
+sceneSetups:
+- path: Assets/Scenes/PlayerTest.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
