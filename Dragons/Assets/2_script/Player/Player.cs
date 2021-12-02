@@ -113,14 +113,9 @@ public class Player : Character
         {
             Quaternion rot = Input.GetKey(Data.GroundKey) ? Quaternion.Euler(Data.Data.PlayerGroundBulletRot) : Quaternion.identity;
 
-            pool.Pop(Trs.position, rot);
+            pool.Pop(DragonMouse.transform.position, rot);
             time = 0;
-        }
-        else if (Input.GetKey(Data.GShotKey) && BulletCorrectlyIntervalGround() < time)
-        {
-            ThrowingBall();
-            time = 0;
-        }
+        }        
         else
         {
             time += Time.deltaTime;
@@ -133,11 +128,7 @@ public class Player : Character
             return Data.Data.PlayerBulletInterval + correctly;//補正値を加えた間隔値を返す
         }
 
-        float BulletCorrectlyIntervalGround()
-        {
-            float correctly = Input.GetAxis(Data.Vertical) * Data.Data.PlayerBulletCorrectly;//スティックの状態から補正値を求める。
-            return Data.Data.PlayerBulletInterval + correctly;//補正値を加えた間隔値を返す
-        }
+        
     }
 
 
@@ -175,61 +166,6 @@ public class Player : Character
         }
     }
 
-    private void ThrowingBall()
-    {
-        if (ThrowingObject != null && TargetObject != null)
-        {
-            // Ballオブジェクトの生成
-            GameObject ball = Instantiate(ThrowingObject, DragonMouse.transform.position, Quaternion.identity);
-
-            // 標的の座標
-            Vector3 targetPosition = TargetObject.transform.position;
-
-            // 射出角度
-            float angle = ThrowingAngle;
-
-            // 射出速度を算出
-            Vector3 velocity = CalculateVelocity(DragonMouse.transform.position, targetPosition, angle);
-
-            // 射出
-            Rigidbody rid = ball.GetComponent<Rigidbody>();
-            rid.AddForce(velocity * rid.mass, ForceMode.VelocityChange);
-        }
-        else
-        {
-            throw new System.Exception("射出するオブジェクトまたは標的のオブジェクトが未設定です。");
-        }
-    }
-
-    /// <summary>
-    /// 標的に命中する射出速度の計算
-    /// </summary>
-    /// <param name="pointA">射出開始座標</param>
-    /// <param name="pointB">標的の座標</param>
-    /// <returns>射出速度</returns>
-    private Vector3 CalculateVelocity(Vector3 pointA, Vector3 pointB, float angle)
-    {
-        // 射出角をラジアンに変換
-        float rad = angle * Mathf.PI / 180;
-
-        // 水平方向の距離x
-        float x = Vector2.Distance(new Vector2(pointA.x, pointA.z), new Vector2(pointB.x, pointB.z));
-
-        // 垂直方向の距離y
-        float y = pointA.y - pointB.y;
-
-        // 斜方投射の公式を初速度について解く
-        float speed = Mathf.Sqrt(-Physics.gravity.y * Mathf.Pow(x, 2) / (2 * Mathf.Pow(Mathf.Cos(rad), 2) * (x * Mathf.Tan(rad) + y)));
-
-        if (float.IsNaN(speed))
-        {
-            // 条件を満たす初速を算出できなければVector3.zeroを返す
-            return Vector3.zero;
-        }
-        else
-        {
-            return (new Vector3(pointB.x - pointA.x, x * Mathf.Tan(rad), pointB.z - pointA.z).normalized * speed);
-        }
-    }
+    
 }
 

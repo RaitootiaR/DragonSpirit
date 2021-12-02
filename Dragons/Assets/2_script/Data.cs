@@ -10,7 +10,6 @@ public class Data : MonoSingleton<Data>
     public const KeyCode RightKey = KeyCode.RightArrow;//右移動キー
     public const KeyCode LeftKey = KeyCode.LeftArrow;//左移動キー
     public const KeyCode ShotKey = KeyCode.Z;//空中ショットキー
-    public const KeyCode GShotKey = KeyCode.X;//地上ショットキー
     public const KeyCode GroundKey = KeyCode.LeftShift;//地面攻撃切り替えキー
     public const string Horizontal = "Horizontal";
     public const string Vertical = "Vertical";
@@ -37,8 +36,15 @@ public class Data : MonoSingleton<Data>
     [Header("弾の速度"), SerializeField] private float _MidplayerBulletSpeed;
     [Header("弾の発射間隔"), SerializeField] private float _MidplayerBulletInterval;
     [Header("移動時の弾の間隔補正値"), SerializeField] private float _MidplayerBulletCorrectly;
-    [Header("地面弾の角度"), SerializeField] private Vector3 _MidplayerGroundBulletRot;
 
+    //Biggestドラゴンステータス
+    [Header("大ドラゴンHP"), SerializeField]
+    [Header("ーーープレイヤーステータスーーー")]
+    private int _BidplayerHp;
+    [Header("大ドラゴンスピード"), SerializeField] private float _BidplayerSpeed;
+    [Header("弾の速度"), SerializeField] private float _BidplayerBulletSpeed;
+    [Header("弾の発射間隔"), SerializeField] private float _BidplayerBulletInterval;
+    [Header("移動時の弾の間隔補正値"), SerializeField] private float _BidplayerBulletCorrectly;
 
 
     [HideInInspector] public int PlayerHP { get { return _playerHp; } }
