@@ -48,7 +48,7 @@ public class Player : Character
 
 
     //ドラゴンの状態を表す
-    enum Dragstate
+    public enum Dragstate
     {
         Minimum,
         Middle,
@@ -143,6 +143,7 @@ public class Player : Character
                 minDrag.SetActive(false);
                 midDrag.SetActive(true);
                 nowstate = Dragstate.Middle;
+                
                 
             break;
 

@@ -4737,6 +4737,7 @@ GameObject:
   - component: {fileID: 19900002}
   - component: {fileID: 7315719174674665600}
   - component: {fileID: 4441546705508640667}
+  - component: {fileID: 3175583619237846510}
   m_Layer: 9
   m_Name: frameBall
   m_TagString: Fire
@@ -9573,6 +9574,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &3175583619237846510
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.86
+  m_Center: {x: -0.0024905205, y: -0.0012521743, z: 0}
 --- !u!1 &100006
 GameObject:
   m_ObjectHideFlags: 0
