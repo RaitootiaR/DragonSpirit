@@ -142,6 +142,7 @@ public class Player : Character
             case Dragstate.Minimum:
                 minDrag.SetActive(false);
                 midDrag.SetActive(true);
+                Data.Data.StatusUpdateMid();
                 nowstate = Dragstate.Middle;
                 
                 
@@ -151,6 +152,7 @@ public class Player : Character
             case Dragstate.Middle:
                 midDrag.SetActive(false);
                 bigDrag.SetActive(true);
+                Data.Data.StatusUpdateBig();
                 nowstate = Dragstate.Biggest;
 
             break;
@@ -159,6 +161,7 @@ public class Player : Character
             case Dragstate.Biggest:
                 bigDrag.SetActive(false);
                 minDrag.SetActive(true);
+                Data.Data.StatusReset();
                 nowstate = Dragstate.Minimum;
 
             break;

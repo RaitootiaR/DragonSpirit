@@ -2346,21 +2346,21 @@ MonoBehaviour:
   _playerBulletInterval: 0.2
   _playerBulletCorrectly: 0.1
   _playerGroundBulletRot: {x: 50, y: 0, z: 0}
-  _MinplayerHp: 2
-  _MinplayerSpeed: 0.25
-  _MinplayerBulletSpeed: 0
-  _MinplayerBulletInterval: 0
-  _MinplayerBulletCorrectly: 0
-  _MidplayerHp: 0
-  _MidplayerSpeed: 0
-  _MidplayerBulletSpeed: 0
-  _MidplayerBulletInterval: 0
-  _MidplayerBulletCorrectly: 0
-  _BidplayerHp: 0
-  _BigplayerSpeed: 0
-  _BigplayerBulletSpeed: 0
-  _BigplayerBulletInterval: 0
-  _BigplayerBulletCorrectly: 0
+  _MinplayerHp: 1
+  _MinplayerSpeed: 0.15
+  _MinplayerBulletSpeed: 0.2
+  _MinplayerBulletInterval: 0.2
+  _MinplayerBulletCorrectly: 0.2
+  _MidplayerHp: 2
+  _MidplayerSpeed: 0.2
+  _MidplayerBulletSpeed: 0.3
+  _MidplayerBulletInterval: 0.15
+  _MidplayerBulletCorrectly: 0.08
+  _BidplayerHp: 3
+  _BigplayerSpeed: 0.25
+  _BigplayerBulletSpeed: 0.4
+  _BigplayerBulletInterval: 0.1
+  _BigplayerBulletCorrectly: 0.05
 --- !u!4 &4564554696407951459
 Transform:
   m_ObjectHideFlags: 0
