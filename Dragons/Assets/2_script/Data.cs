@@ -93,20 +93,16 @@ public class Data : MonoSingleton<Data>
         _playerBulletCorrectly = _MinplayerBulletCorrectly;
     }
     
-    public void StatusUpdateMid()
+    public void StatusUpdateMidSpeed()
     {
         _playerSpeed = _MidplayerSpeed;
-        _playerBulletSpeed = _MidplayerBulletSpeed;
-        _playerBulletInterval = _MidplayerBulletInterval;
-        _playerBulletCorrectly = _MidplayerBulletCorrectly;
+        
     }
 
-    public void StatusUpdateBig()
+    public void StatusUpdateBigSpeed()
     {
         _playerSpeed = _BigplayerSpeed;
-        _playerBulletSpeed = _BigplayerBulletSpeed;
-        _playerBulletInterval = _BigplayerBulletInterval;
-        _playerBulletCorrectly = _BigplayerBulletCorrectly;
+        
     }
 
 

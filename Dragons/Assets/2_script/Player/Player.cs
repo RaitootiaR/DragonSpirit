@@ -26,7 +26,16 @@ public class Player : Character
     ///オブジェクトの生成
     ///</summary>
     [SerializeField, Tooltip("ドラゴンの口をここに割り当てる")]
-    private GameObject DragonMouse;
+    private GameObject DragonSingleMouse;
+
+    ///<summary>
+    ///ドラゴン2ショット
+    /// </summary>
+    [SerializeField, Tooltip("ドラゴンの右口を割り当てる")]
+    private GameObject DragonTwinMouseR;
+    [SerializeField, Tooltip("ドラゴンの左口を割り当てる")]
+    private GameObject DragonTwinMouseL;
+
 
     /// <summary>
     /// 射出するオブジェクト
@@ -55,8 +64,16 @@ public class Player : Character
         Biggest
     }
 
-    Dragstate nowstate = Dragstate.Minimum;
+    
+    public enum Fireamount
+    {
+        Single,
+        Twin,
+        Triple
+    }
 
+    Dragstate nowstate = Dragstate.Minimum;
+    Fireamount nowamount = Fireamount.Single;
    
 
     public override void OnStart()
@@ -79,8 +96,13 @@ public class Player : Character
     {
         //基盤のUpdateの処理だから消さない
         base.OnUpdate();
-        
 
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            nowamount = Fireamount.Twin;
+            Debug.Log(nowamount);
+                
+        }
       
     }
 
@@ -109,13 +131,26 @@ public class Player : Character
     float time = 0;
     protected override void Shot()
     {
-        if (Input.GetKey(Data.ShotKey) && BulletCorrectlyInterval()  < time)
+        if (Input.GetKey(Data.ShotKey) && BulletCorrectlyInterval() < time)
         {
             Quaternion rot = Input.GetKey(Data.GroundKey) ? Quaternion.Euler(Data.Data.PlayerGroundBulletRot) : Quaternion.identity;
+            switch (nowamount) {
+                
+                case Fireamount.Single:
+                    pool.Pop(DragonSingleMouse.transform.position, rot);
+                    time = 0;
+                    break;
 
-            pool.Pop(DragonMouse.transform.position, rot);
-            time = 0;
-        }        
+                case Fireamount.Twin:
+                    pool.Pop(DragonTwinMouseR.transform.position, rot);
+                    pool.Pop(DragonTwinMouseL.transform.position, rot);
+                    time = 0;
+                    break;
+
+                default:
+                    break;
+            }
+        }                    
         else
         {
             time += Time.deltaTime;
@@ -142,8 +177,9 @@ public class Player : Character
             case Dragstate.Minimum:
                 minDrag.SetActive(false);
                 midDrag.SetActive(true);
-                Data.Data.StatusUpdateMid();
+                Data.Data.StatusUpdateMidSpeed();
                 nowstate = Dragstate.Middle;
+                
                 
                 
             break;
@@ -152,7 +188,7 @@ public class Player : Character
             case Dragstate.Middle:
                 midDrag.SetActive(false);
                 bigDrag.SetActive(true);
-                Data.Data.StatusUpdateBig();
+                Data.Data.StatusUpdateBigSpeed();
                 nowstate = Dragstate.Biggest;
 
             break;

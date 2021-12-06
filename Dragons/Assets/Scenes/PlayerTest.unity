@@ -298,6 +298,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7858860236212944614, guid: c4e92603ea1ae6e40a7b29673faf0b6b, type: 3}
   m_PrefabInstance: {fileID: 4564554696407489516}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &660838265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 660838266}
+  m_Layer: 0
+  m_Name: LeftMouse
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &660838266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660838265}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.5, y: 0.331, z: 3.094}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4564554695158574015}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &920232014 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2343481937923754142, guid: 86416f8d50d7baf4db3135fe6bb7bc8a, type: 3}
@@ -790,6 +820,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8356797103030576099, guid: 98294175d2cbb244aa686ac222b00cb0, type: 3}
   m_PrefabInstance: {fileID: 4564554696148230863}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1886866690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1886866691}
+  m_Layer: 0
+  m_Name: RightMouse
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1886866691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886866690}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5, y: 0.331, z: 3.094}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4564554695158574015}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &373800156171864112
 Camera:
   m_ObjectHideFlags: 0
@@ -933,7 +993,9 @@ MonoBehaviour:
   minDrag: {fileID: 1845170703}
   midDrag: {fileID: 920232014}
   bigDrag: {fileID: 620182885}
-  DragonMouse: {fileID: 1510655905}
+  DragonSingleMouse: {fileID: 1510655905}
+  DragonTwinMouseR: {fileID: 1886866690}
+  DragonTwinMouseL: {fileID: 660838265}
   ThrowingObject: {fileID: 2286973971524019791, guid: 8ea4a2bb4d574944e98279fe9a0941ef, type: 3}
   TargetObject: {fileID: 1165147445}
   ThrowingAngle: 0
@@ -970,6 +1032,8 @@ Transform:
   - {fileID: 620182886}
   - {fileID: 1165147446}
   - {fileID: 1510655906}
+  - {fileID: 1886866691}
+  - {fileID: 660838266}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
