@@ -27,12 +27,6 @@ public class GroundBullet : MonoBehaviour
         }
     }
 
-    [System.Obsolete]
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            Destroy(gameObject);
-        }
-    }
+    
+    
 }

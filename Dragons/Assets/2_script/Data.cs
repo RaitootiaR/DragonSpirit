@@ -10,7 +10,6 @@ public class Data : MonoSingleton<Data>
     public const KeyCode RightKey = KeyCode.RightArrow;//右移動キー
     public const KeyCode LeftKey = KeyCode.LeftArrow;//左移動キー
     public const KeyCode ShotKey = KeyCode.Z;//空中ショットキー
-    public const KeyCode GShotKey = KeyCode.X;//地上ショットキー
     public const KeyCode GroundKey = KeyCode.LeftShift;//地面攻撃切り替えキー
     public const string Horizontal = "Horizontal";
     public const string Vertical = "Vertical";
@@ -28,17 +27,35 @@ public class Data : MonoSingleton<Data>
     [Header("弾の発射間隔"), SerializeField] private float _playerBulletInterval;
     [Header("移動時の弾の間隔補正値"), SerializeField] private float _playerBulletCorrectly;
     [Header("地面弾の角度"), SerializeField] private Vector3 _playerGroundBulletRot;
+    [Header("右弾の角度"), SerializeField] private Vector3 _playerRightBulletRot;
+    [Header("左弾の角度"), SerializeField] private Vector3 _playerLeftBulletRot;
+
+    //Minimumドラゴンステータス
+    [Header("小ドラゴンHP"), SerializeField]
+    [Header("ーーープレイヤーステータスーーー")]
+    private int _MinplayerHp;
+    [Header("小ドラゴンスピード"), SerializeField] private float _MinplayerSpeed;
+    [Header("小ドラゴン弾の速度"), SerializeField] private float _MinplayerBulletSpeed;
+    [Header("小ドラゴン弾の発射間隔"), SerializeField] private float _MinplayerBulletInterval;
+    [Header("小ドラゴン移動時の弾の間隔補正値"), SerializeField] private float _MinplayerBulletCorrectly;
 
     //Middleドラゴンステータス
     [Header("中ドラゴンHP"), SerializeField]
     [Header("ーーープレイヤーステータスーーー")]
     private int _MidplayerHp;
     [Header("中ドラゴンスピード"), SerializeField] private float _MidplayerSpeed;
-    [Header("弾の速度"), SerializeField] private float _MidplayerBulletSpeed;
-    [Header("弾の発射間隔"), SerializeField] private float _MidplayerBulletInterval;
-    [Header("移動時の弾の間隔補正値"), SerializeField] private float _MidplayerBulletCorrectly;
-    [Header("地面弾の角度"), SerializeField] private Vector3 _MidplayerGroundBulletRot;
+    [Header("中ドラゴン弾の速度"), SerializeField] private float _MidplayerBulletSpeed;
+    [Header("中ドラゴン弾の発射間隔"), SerializeField] private float _MidplayerBulletInterval;
+    [Header("中ドラゴン移動時の弾の間隔補正値"), SerializeField] private float _MidplayerBulletCorrectly;
 
+    //Biggestドラゴンステータス
+    [Header("大ドラゴンHP"), SerializeField]
+    [Header("ーーープレイヤーステータスーーー")]
+    private int _BidplayerHp;
+    [Header("大ドラゴンスピード"), SerializeField] private float _BigplayerSpeed;
+    [Header("大ドラゴン弾の速度"), SerializeField] private float _BigplayerBulletSpeed;
+    [Header("大ドラゴン弾の発射間隔"), SerializeField] private float _BigplayerBulletInterval;
+    [Header("大ドラゴン移動時の弾の間隔補正値"), SerializeField] private float _BigplayerBulletCorrectly;
 
 
     [HideInInspector] public int PlayerHP { get { return _playerHp; } }
@@ -48,7 +65,8 @@ public class Data : MonoSingleton<Data>
     [HideInInspector] public float PlayerBulletInterval { get { return _playerBulletInterval; } }
     [HideInInspector] public float PlayerBulletCorrectly { get { return _playerBulletCorrectly; } }
     [HideInInspector] public Vector3 PlayerGroundBulletRot { get { return _playerGroundBulletRot; } }
-
+    [HideInInspector] public Vector3 PlayerRightBulletRot { get { return _playerRightBulletRot; } }
+    [HideInInspector] public Vector3 PlayerLeftBulletRot { get { return _playerLeftBulletRot; } }
 
 
 
@@ -70,7 +88,42 @@ public class Data : MonoSingleton<Data>
 
     //パラメータ調整
 
+    public void SpeedReset()
+    {
+        _playerSpeed = _MinplayerSpeed;
+        _playerBulletSpeed = _MinplayerBulletSpeed;
+        _playerBulletInterval = _MinplayerBulletInterval;
+        _playerBulletCorrectly = _MinplayerBulletCorrectly;
+    }
     
+    public void StatusUpdateMidSpeed()
+    {
+        _playerSpeed = _MidplayerSpeed;
+        
+    }
+
+    public void StatusUpdateBigSpeed()
+    {
+        _playerSpeed = _BigplayerSpeed;
+        
+    }
+
+   public void StatusResetFireSpeed()
+    {
+        _playerBulletInterval = _MinplayerBulletInterval;
+        _playerBulletCorrectly = _MinplayerBulletCorrectly;
+    }
+    public void StatusUpdateNormalFireSpeed()
+    {
+        _playerBulletInterval = _MidplayerBulletInterval;
+        _playerBulletCorrectly = _MidplayerBulletCorrectly;
+    }
+    public void StatusUpdateFastFireSpeed()
+    {
+        _playerBulletInterval = _BigplayerBulletInterval;
+        _playerBulletCorrectly = _BigplayerBulletCorrectly;
+    }
+
 
 
 }

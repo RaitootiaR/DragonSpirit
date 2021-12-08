@@ -74,12 +74,18 @@
     <Compile Include="Assets\1_Stage\ground\toolkit\scripts\TerrainToolkit.cs" />
     <Compile Include="Assets\2_script\Player\Player.cs" />
     <Compile Include="Assets\999_ I T O S O\ITOSO.cs" />
+    <Compile Include="Assets\Itemspawn.cs" />
     <Compile Include="Assets\2_script\Tool\Character.cs" />
 <<<<<<< HEAD
     <Compile Include="Assets\CameraController.cs" />
 =======
     <Compile Include="Assets\2_script\CameraController.cs" />
+<<<<<<< HEAD
 >>>>>>> b5d3699bee9233848c523a27e05d3294e2cdbcbd
+=======
+    <Compile Include="Assets\FireamountItem.cs" />
+    <Compile Include="Assets\FireSpeedupItem.cs" />
+>>>>>>> NewHekun
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Malbers Animations\Common\Shaders\Mask8Toon.shader" />
