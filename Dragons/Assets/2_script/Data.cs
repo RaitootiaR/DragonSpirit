@@ -27,6 +27,8 @@ public class Data : MonoSingleton<Data>
     [Header("弾の発射間隔"), SerializeField] private float _playerBulletInterval;
     [Header("移動時の弾の間隔補正値"), SerializeField] private float _playerBulletCorrectly;
     [Header("地面弾の角度"), SerializeField] private Vector3 _playerGroundBulletRot;
+    [Header("右弾の角度"), SerializeField] private Vector3 _playerRightBulletRot;
+    [Header("左弾の角度"), SerializeField] private Vector3 _playerLeftBulletRot;
 
     //Minimumドラゴンステータス
     [Header("小ドラゴンHP"), SerializeField]
@@ -63,7 +65,8 @@ public class Data : MonoSingleton<Data>
     [HideInInspector] public float PlayerBulletInterval { get { return _playerBulletInterval; } }
     [HideInInspector] public float PlayerBulletCorrectly { get { return _playerBulletCorrectly; } }
     [HideInInspector] public Vector3 PlayerGroundBulletRot { get { return _playerGroundBulletRot; } }
-
+    [HideInInspector] public Vector3 PlayerRightBulletRot { get { return _playerRightBulletRot; } }
+    [HideInInspector] public Vector3 PlayerLeftBulletRot { get { return _playerLeftBulletRot; } }
 
 
 
@@ -85,7 +88,7 @@ public class Data : MonoSingleton<Data>
 
     //パラメータ調整
 
-    public void StatusReset()
+    public void SpeedReset()
     {
         _playerSpeed = _MinplayerSpeed;
         _playerBulletSpeed = _MinplayerBulletSpeed;
@@ -104,6 +107,23 @@ public class Data : MonoSingleton<Data>
         _playerSpeed = _BigplayerSpeed;
         
     }
+
+   public void StatusResetFireSpeed()
+    {
+        _playerBulletInterval = _MinplayerBulletInterval;
+        _playerBulletCorrectly = _MinplayerBulletCorrectly;
+    }
+    public void StatusUpdateNormalFireSpeed()
+    {
+        _playerBulletInterval = _MidplayerBulletInterval;
+        _playerBulletCorrectly = _MidplayerBulletCorrectly;
+    }
+    public void StatusUpdateFastFireSpeed()
+    {
+        _playerBulletInterval = _BigplayerBulletInterval;
+        _playerBulletCorrectly = _BigplayerBulletCorrectly;
+    }
+
 
 
 }

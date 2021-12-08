@@ -70,6 +70,8 @@
     <Compile Include="Assets\Itemspawn.cs" />
     <Compile Include="Assets\2_script\Tool\Character.cs" />
     <Compile Include="Assets\2_script\CameraController.cs" />
+    <Compile Include="Assets\FireamountItem.cs" />
+    <Compile Include="Assets\FireSpeedupItem.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Malbers Animations\Common\Shaders\Mask8Toon.shader" />

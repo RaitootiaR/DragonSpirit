@@ -64,16 +64,23 @@ public class Player : Character
         Biggest
     }
 
-    
-    public enum Fireamount
+    //炎の量
+    private enum Fireamount
     {
         Single,
         Twin,
         Triple
     }
+    private enum FireSpeed
+    {
+        slow,
+        normal,
+        fast
+    } 
 
     Dragstate nowstate = Dragstate.Minimum;
     Fireamount nowamount = Fireamount.Single;
+    FireSpeed nowfirespeed = FireSpeed.slow;
    
 
     public override void OnStart()
@@ -97,12 +104,7 @@ public class Player : Character
         //基盤のUpdateの処理だから消さない
         base.OnUpdate();
 
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            nowamount = Fireamount.Twin;
-            Debug.Log(nowamount);
-                
-        }
+        
       
     }
 
@@ -147,7 +149,13 @@ public class Player : Character
                     time = 0;
                     break;
 
-                default:
+                case Fireamount.Triple:
+                    pool.Pop(DragonSingleMouse.transform.position, rot);
+                    rot = Input.GetKey(Data.GroundKey) ? Quaternion.Euler(Data.Data.PlayerGroundBulletRot) : Quaternion.Euler(Data.Data.PlayerRightBulletRot);
+                    pool.Pop(DragonTwinMouseR.transform.position, rot);
+                    rot = Input.GetKey(Data.GroundKey) ? Quaternion.Euler(Data.Data.PlayerGroundBulletRot) : Quaternion.Euler(Data.Data.PlayerLeftBulletRot);
+                    pool.Pop(DragonTwinMouseL.transform.position, rot);
+                    time = 0;
                     break;
             }
         }                    
@@ -197,7 +205,7 @@ public class Player : Character
             case Dragstate.Biggest:
                 bigDrag.SetActive(false);
                 minDrag.SetActive(true);
-                Data.Data.StatusReset();
+                Data.Data.SpeedReset();
                 nowstate = Dragstate.Minimum;
 
             break;
@@ -206,6 +214,46 @@ public class Player : Character
         }
     }
 
-    
+    public void Fire_powerUp()
+    {
+        switch (nowamount)
+        {
+            case Fireamount.Single:
+                nowamount = Fireamount.Twin;
+                Debug.Log(nowamount);
+                break;
+
+            case Fireamount.Twin:
+                nowamount = Fireamount.Triple;
+                Debug.Log(nowamount);
+                break;
+
+            case Fireamount.Triple:
+                nowamount = Fireamount.Single;
+                Debug.Log(nowamount);
+                break;
+        }
+    }
+
+    public void Fire_speedUp()
+    {
+        switch (nowfirespeed)
+        {
+            case FireSpeed.slow:
+                nowfirespeed = FireSpeed.normal;
+                Data.Data.StatusUpdateNormalFireSpeed();
+                break;
+
+            case FireSpeed.normal:
+                nowfirespeed = FireSpeed.fast;
+                Data.Data.StatusUpdateFastFireSpeed();
+                break;
+
+            case FireSpeed.fast:
+                nowfirespeed = FireSpeed.slow;
+                Data.Data.StatusResetFireSpeed();
+                break;
+        }
+    }
 }
 
