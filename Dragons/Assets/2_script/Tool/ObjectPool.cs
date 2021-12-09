@@ -29,6 +29,7 @@ public sealed class ObjectPool
         {
             Obj = PoolList.First(_ => !_.activeSelf);
             Obj.SetActive(true);
+            Obj.GetComponent<Bullet>().BulletSpeed = Data.Data.PlayerBulletSpeed;
             Obj.transform.position = pos;
             Obj.transform.rotation = rot;
             return Obj;

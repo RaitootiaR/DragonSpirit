@@ -26,7 +26,16 @@ public class Player : Character
     ///オブジェクトの生成
     ///</summary>
     [SerializeField, Tooltip("ドラゴンの口をここに割り当てる")]
-    private GameObject DragonMouse;
+    private GameObject DragonSingleMouse;
+
+    ///<summary>
+    ///ドラゴン2ショット
+    /// </summary>
+    [SerializeField, Tooltip("ドラゴンの右口を割り当てる")]
+    private GameObject DragonTwinMouseR;
+    [SerializeField, Tooltip("ドラゴンの左口を割り当てる")]
+    private GameObject DragonTwinMouseL;
+
 
     /// <summary>
     /// 射出するオブジェクト
@@ -48,15 +57,30 @@ public class Player : Character
 
 
     //ドラゴンの状態を表す
-    enum Dragstate
+    public enum Dragstate
     {
         Minimum,
         Middle,
         Biggest
     }
 
-    Dragstate nowstate = Dragstate.Minimum;
+    //炎の量
+    private enum Fireamount
+    {
+        Single,
+        Twin,
+        Triple
+    }
+    private enum FireSpeed
+    {
+        slow,
+        normal,
+        fast
+    } 
 
+    Dragstate nowstate = Dragstate.Minimum;
+    Fireamount nowamount = Fireamount.Single;
+    FireSpeed nowfirespeed = FireSpeed.slow;
    
 
     public override void OnStart()
@@ -79,8 +103,8 @@ public class Player : Character
     {
         //基盤のUpdateの処理だから消さない
         base.OnUpdate();
-        
 
+        
       
     }
 
@@ -109,18 +133,32 @@ public class Player : Character
     float time = 0;
     protected override void Shot()
     {
-        if (Input.GetKey(Data.ShotKey) && BulletCorrectlyInterval()  < time)
+        if (Input.GetKey(Data.ShotKey) && BulletCorrectlyInterval() < time)
         {
             Quaternion rot = Input.GetKey(Data.GroundKey) ? Quaternion.Euler(Data.Data.PlayerGroundBulletRot) : Quaternion.identity;
+            switch (nowamount) {
+                
+                case Fireamount.Single:
+                    pool.Pop(DragonSingleMouse.transform.position, rot);
+                    time = 0;
+                    break;
 
-            pool.Pop(Trs.position, rot);
-            time = 0;
-        }
-        else if (Input.GetKey(Data.GShotKey) && BulletCorrectlyIntervalGround() < time)
-        {
-            ThrowingBall();
-            time = 0;
-        }
+                case Fireamount.Twin:
+                    pool.Pop(DragonTwinMouseR.transform.position, rot);
+                    pool.Pop(DragonTwinMouseL.transform.position, rot);
+                    time = 0;
+                    break;
+
+                case Fireamount.Triple:
+                    pool.Pop(DragonSingleMouse.transform.position, rot);
+                    rot = Input.GetKey(Data.GroundKey) ? Quaternion.Euler(Data.Data.PlayerGroundBulletRot) : Quaternion.Euler(Data.Data.PlayerRightBulletRot);
+                    pool.Pop(DragonTwinMouseR.transform.position, rot);
+                    rot = Input.GetKey(Data.GroundKey) ? Quaternion.Euler(Data.Data.PlayerGroundBulletRot) : Quaternion.Euler(Data.Data.PlayerLeftBulletRot);
+                    pool.Pop(DragonTwinMouseL.transform.position, rot);
+                    time = 0;
+                    break;
+            }
+        }                    
         else
         {
             time += Time.deltaTime;
@@ -133,11 +171,7 @@ public class Player : Character
             return Data.Data.PlayerBulletInterval + correctly;//補正値を加えた間隔値を返す
         }
 
-        float BulletCorrectlyIntervalGround()
-        {
-            float correctly = Input.GetAxis(Data.Vertical) * Data.Data.PlayerBulletCorrectly;//スティックの状態から補正値を求める。
-            return Data.Data.PlayerBulletInterval + correctly;//補正値を加えた間隔値を返す
-        }
+        
     }
 
 
@@ -151,7 +185,10 @@ public class Player : Character
             case Dragstate.Minimum:
                 minDrag.SetActive(false);
                 midDrag.SetActive(true);
+                Data.Data.StatusUpdateMidSpeed();
                 nowstate = Dragstate.Middle;
+                
+                
                 
             break;
 
@@ -159,6 +196,7 @@ public class Player : Character
             case Dragstate.Middle:
                 midDrag.SetActive(false);
                 bigDrag.SetActive(true);
+                Data.Data.StatusUpdateBigSpeed();
                 nowstate = Dragstate.Biggest;
 
             break;
@@ -167,6 +205,7 @@ public class Player : Character
             case Dragstate.Biggest:
                 bigDrag.SetActive(false);
                 minDrag.SetActive(true);
+                Data.Data.SpeedReset();
                 nowstate = Dragstate.Minimum;
 
             break;
@@ -175,60 +214,45 @@ public class Player : Character
         }
     }
 
-    private void ThrowingBall()
+    public void Fire_powerUp()
     {
-        if (ThrowingObject != null && TargetObject != null)
+        switch (nowamount)
         {
-            // Ballオブジェクトの生成
-            GameObject ball = Instantiate(ThrowingObject, DragonMouse.transform.position, Quaternion.identity);
+            case Fireamount.Single:
+                nowamount = Fireamount.Twin;
+                Debug.Log(nowamount);
+                break;
 
-            // 標的の座標
-            Vector3 targetPosition = TargetObject.transform.position;
+            case Fireamount.Twin:
+                nowamount = Fireamount.Triple;
+                Debug.Log(nowamount);
+                break;
 
-            // 射出角度
-            float angle = ThrowingAngle;
-
-            // 射出速度を算出
-            Vector3 velocity = CalculateVelocity(DragonMouse.transform.position, targetPosition, angle);
-
-            // 射出
-            Rigidbody rid = ball.GetComponent<Rigidbody>();
-            rid.AddForce(velocity * rid.mass, ForceMode.VelocityChange);
-        }
-        else
-        {
-            throw new System.Exception("射出するオブジェクトまたは標的のオブジェクトが未設定です。");
+            case Fireamount.Triple:
+                nowamount = Fireamount.Single;
+                Debug.Log(nowamount);
+                break;
         }
     }
 
-    /// <summary>
-    /// 標的に命中する射出速度の計算
-    /// </summary>
-    /// <param name="pointA">射出開始座標</param>
-    /// <param name="pointB">標的の座標</param>
-    /// <returns>射出速度</returns>
-    private Vector3 CalculateVelocity(Vector3 pointA, Vector3 pointB, float angle)
+    public void Fire_speedUp()
     {
-        // 射出角をラジアンに変換
-        float rad = angle * Mathf.PI / 180;
-
-        // 水平方向の距離x
-        float x = Vector2.Distance(new Vector2(pointA.x, pointA.z), new Vector2(pointB.x, pointB.z));
-
-        // 垂直方向の距離y
-        float y = pointA.y - pointB.y;
-
-        // 斜方投射の公式を初速度について解く
-        float speed = Mathf.Sqrt(-Physics.gravity.y * Mathf.Pow(x, 2) / (2 * Mathf.Pow(Mathf.Cos(rad), 2) * (x * Mathf.Tan(rad) + y)));
-
-        if (float.IsNaN(speed))
+        switch (nowfirespeed)
         {
-            // 条件を満たす初速を算出できなければVector3.zeroを返す
-            return Vector3.zero;
-        }
-        else
-        {
-            return (new Vector3(pointB.x - pointA.x, x * Mathf.Tan(rad), pointB.z - pointA.z).normalized * speed);
+            case FireSpeed.slow:
+                nowfirespeed = FireSpeed.normal;
+                Data.Data.StatusUpdateNormalFireSpeed();
+                break;
+
+            case FireSpeed.normal:
+                nowfirespeed = FireSpeed.fast;
+                Data.Data.StatusUpdateFastFireSpeed();
+                break;
+
+            case FireSpeed.fast:
+                nowfirespeed = FireSpeed.slow;
+                Data.Data.StatusResetFireSpeed();
+                break;
         }
     }
 }

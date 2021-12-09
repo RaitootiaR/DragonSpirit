@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public float BulletSpeed;
+    private void Start()
+    {
+        BulletSpeed = Data.Data.PlayerBulletSpeed;
+    }
     void Update()
     {
-        transform.position = transform.position + transform.forward * Data.Data.PlayerBulletSpeed;
+        transform.position = transform.position + transform.forward * BulletSpeed;
     }
     private void OnBecameInvisible()
     {
