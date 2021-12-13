@@ -47,29 +47,6 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-<<<<<<< HEAD
-=======
-    <Compile Include="Assets\2_script\Tool\ObjectPool.cs" />
-    <Compile Include="Assets\2_script\Data.cs" />
-    <Compile Include="Assets\2_script\Tool\MonoSingleton.cs" />
-    <Compile Include="Assets\FireSpeedupItem.cs" />
-    <Compile Include="Assets\#NVJOB Water Shaders V2\Water\shader\NVWaterShaders.cs" />
-    <Compile Include="Assets\2_script\Player\GroundBullet.cs" />
-    <Compile Include="Assets\2_script\SUGUNIKESE.cs" />
-    <Compile Include="Assets\2_script\Player\Bullet.cs" />
-    <Compile Include="Assets\FireamountItem.cs" />
-    <Compile Include="Assets\2_script\Gravityplus.cs" />
-    <Compile Include="Assets\2_script\Draggrowitem.cs" />
-    <Compile Include="Assets\1_Stage\ground\toolkit\scripts\TerrainToolkit.cs" />
-    <Compile Include="Assets\2_script\Player\Player.cs" />
-    <Compile Include="Assets\999_ I T O S O\ITOSO.cs" />
-    <Compile Include="Assets\Itemspawn.cs" />
-    <Compile Include="Assets\2_script\Tool\Character.cs" />
-    <Compile Include="Assets\2_script\CameraController.cs" />
-  </ItemGroup>
-  <ItemGroup>
-     <None Include="Assets\Malbers Animations\Common\Shaders\Mask8Toon.shader" />
->>>>>>> origin/NewHekun
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.1.2f1\Editor\Data\Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -81,15 +58,18 @@
      <Compile Include="Assets\2_script\Tool\ObjectPool.cs" />
      <Compile Include="Assets\2_script\Data.cs" />
      <Compile Include="Assets\2_script\Tool\MonoSingleton.cs" />
+     <Compile Include="Assets\FireSpeedupItem.cs" />
      <Compile Include="Assets\#NVJOB Water Shaders V2\Water\shader\NVWaterShaders.cs" />
      <Compile Include="Assets\2_script\Player\GroundBullet.cs" />
      <Compile Include="Assets\2_script\SUGUNIKESE.cs" />
      <Compile Include="Assets\2_script\Player\Bullet.cs" />
+     <Compile Include="Assets\FireamountItem.cs" />
      <Compile Include="Assets\2_script\Gravityplus.cs" />
      <Compile Include="Assets\2_script\Draggrowitem.cs" />
      <Compile Include="Assets\1_Stage\ground\toolkit\scripts\TerrainToolkit.cs" />
      <Compile Include="Assets\2_script\Player\Player.cs" />
      <Compile Include="Assets\999_ I T O S O\ITOSO.cs" />
+     <Compile Include="Assets\Itemspawn.cs" />
      <Compile Include="Assets\2_script\Tool\Character.cs" />
      <Compile Include="Assets\2_script\CameraController.cs" />
      <None Include="Assets\Malbers Animations\Common\Shaders\Mask8Toon.shader" />
