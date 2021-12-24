@@ -6,7 +6,6 @@ using System;
 public abstract class Character : MonoBehaviour
 {
     #region 抽象
-    protected abstract int _maxHp { get; set; }//最大HP
     protected abstract Animator _ani { get; set; }//アニメーター
     protected abstract string _damageTag { get; set; }//ダメージを受けるタグ
     protected abstract void Move();
@@ -16,7 +15,6 @@ public abstract class Character : MonoBehaviour
     [SerializeField, Header("弾")] private GameObject Bullet;
     protected ObjectPool pool;
 
-    private int _hp = default;//現在のHP
     private bool _isDamage = false;
 
     //表示されたタイミングで初期処理を呼ぶ。
@@ -39,8 +37,7 @@ public abstract class Character : MonoBehaviour
     //表示時に呼び出す。
     public virtual void OnAwake()
     {
-        _hp = _maxHp;
-        _isDamage = false;
+        
     }
 
     //常に呼び出す。
@@ -57,16 +54,11 @@ public abstract class Character : MonoBehaviour
 
         Damage();
 
-        //HPが無くなったら、死亡する。
-        if (_hp <= 0)
-        {
-            Death();
-        }
+        
     }
     protected void Damage()
     {
         //Hpを減らす。
-        _hp--;
         //死亡アニメーション
 
         //_ani.SetBool()

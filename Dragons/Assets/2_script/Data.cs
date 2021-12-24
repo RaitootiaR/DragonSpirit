@@ -31,27 +31,22 @@ public class Data : MonoSingleton<Data>
     [Header("左弾の角度"), SerializeField] private Vector3 _playerLeftBulletRot;
 
     //Minimumドラゴンステータス
-    [Header("小ドラゴンHP"), SerializeField]
     [Header("ーーープレイヤーステータスーーー")]
-    private int _MinplayerHp;
+    
     [Header("小ドラゴンスピード"), SerializeField] private float _MinplayerSpeed;
     [Header("小ドラゴン弾の速度"), SerializeField] private float _MinplayerBulletSpeed;
     [Header("小ドラゴン弾の発射間隔"), SerializeField] private float _MinplayerBulletInterval;
     [Header("小ドラゴン移動時の弾の間隔補正値"), SerializeField] private float _MinplayerBulletCorrectly;
 
     //Middleドラゴンステータス
-    [Header("中ドラゴンHP"), SerializeField]
     [Header("ーーープレイヤーステータスーーー")]
-    private int _MidplayerHp;
     [Header("中ドラゴンスピード"), SerializeField] private float _MidplayerSpeed;
     [Header("中ドラゴン弾の速度"), SerializeField] private float _MidplayerBulletSpeed;
     [Header("中ドラゴン弾の発射間隔"), SerializeField] private float _MidplayerBulletInterval;
     [Header("中ドラゴン移動時の弾の間隔補正値"), SerializeField] private float _MidplayerBulletCorrectly;
 
     //Biggestドラゴンステータス
-    [Header("大ドラゴンHP"), SerializeField]
     [Header("ーーープレイヤーステータスーーー")]
-    private int _BidplayerHp;
     [Header("大ドラゴンスピード"), SerializeField] private float _BigplayerSpeed;
     [Header("大ドラゴン弾の速度"), SerializeField] private float _BigplayerBulletSpeed;
     [Header("大ドラゴン弾の発射間隔"), SerializeField] private float _BigplayerBulletInterval;
@@ -124,6 +119,10 @@ public class Data : MonoSingleton<Data>
         _playerBulletCorrectly = _BigplayerBulletCorrectly;
     }
 
+    public void Damage()
+    {
+        _playerHp--;
+    }
 
 
 }
